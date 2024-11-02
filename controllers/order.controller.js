@@ -10,11 +10,9 @@ module.exports.getOrders = async (req, res) => {
     uri: "/css/orders.css",
   });
 
-  //To find cart count
+
   const user = res.locals.user;
   const cart = await Cart.findOne({ userId: user._id });
-
-  //Fetching Orders from Database
   const order = await Order.find({ userId: user._id });
 
   res.render("orders", {
@@ -25,11 +23,6 @@ module.exports.getOrders = async (req, res) => {
   });
 };
 
-/*
-  -----------------------------------------------
-  Get Order View
-  -----------------------------------------------
-*/
 
 module.exports.getOrderView = async (req, res) => {
   //Css Path
@@ -38,11 +31,9 @@ module.exports.getOrderView = async (req, res) => {
     uri: "/css/order.css",
   });
 
-  //To find cart count
+
   const user = res.locals.user;
   const cart = await Cart.findOne({ userId: user._id });
-
-  //Fetching Orders from Database
   const orderId = req.params.id;
   const order = await Order.findOne({ userId: user._id, _id: orderId });
 

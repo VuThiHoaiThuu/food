@@ -24,7 +24,6 @@ module.exports.getCart = async (req, res) => {
   });
 };
 
-//Cart Count
 module.exports.getCount = async (req, res) => {
   //To find cart count
   const user = res.locals.user;
@@ -37,7 +36,6 @@ module.exports.getCount = async (req, res) => {
 module.exports.postCart = async (req, res) => {
   const itemId = req.params.id;
   const user = res.locals.user;
-  //Checking if user has cart
   const cart = await Cart.findOne({ userId: user._id });
   if (!cart) {
     const cartNew = new Cart({
@@ -48,7 +46,6 @@ module.exports.postCart = async (req, res) => {
     return res.redirect("/menu");
   }
 
-  //Checking if item Already in Cart for particular User
   const isExist = await Cart.findOne({
     userId: user._id,
     "items.itemId": itemId,
@@ -84,11 +81,7 @@ module.exports.patchCart = async (req, res) => {
   res.send("Item Updated");
 };
 
-/*
-  -----------------------------------------------
-  Cart Delete
-  -----------------------------------------------
-*/
+
 module.exports.deleteCart = async (req, res) => {
   const id = +req.params.id;
   const user = res.locals.user;
@@ -99,13 +92,7 @@ module.exports.deleteCart = async (req, res) => {
   res.redirect("/cart");
 };
 
-/*
-  -----------------------------------------------
-  Delete / Clear Complete Cart
-  -----------------------------------------------
-*/
 
-//this will always be use when an order is placed
 module.exports.clearCart = async (req, res) => {
   const user = res.locals.user;
   await Cart.deleteOne({ userId: user._id });

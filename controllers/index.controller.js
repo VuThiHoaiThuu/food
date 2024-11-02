@@ -7,7 +7,7 @@ module.exports.getIndex = async (req, res) => {
     uri: "/css/index.css",
   });
 
-  //To find cart count
+ 
   const user = res.locals.user;
   let cart = null;
   if (user) {

@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
-//Schema
 
 const itemSchema = new mongoose.Schema(
   {
@@ -35,8 +34,6 @@ const itemSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-
-//Model
 
 const Item = new mongoose.model("item", itemSchema);
 

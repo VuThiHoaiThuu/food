@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
-//Schema
 const cartSchema = new mongoose.Schema({
   userId: {
     type: String,
@@ -20,8 +19,7 @@ const cartSchema = new mongoose.Schema({
   ],
 });
 
-//Creating Model
 const Cart = new mongoose.model("cart", cartSchema);
 
-//Model Exports
+
 module.exports = Cart;

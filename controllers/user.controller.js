@@ -162,7 +162,7 @@ module.exports.patchUpdate = async (req, res) => {
 
   const us = await User.findOneAndUpdate(
     { _id: user._id },
-    { $set: { [field]: newValue } } //Here to use variable as a field name we have enclosed variable in [ ]
+    { $set: { [field]: newValue } } 
   );
   res.send(`${field} updated`);
 };

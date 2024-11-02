@@ -1,11 +1,10 @@
 const mongoose = require("mongoose");
 
-//Schema
 const orderSchema = new mongoose.Schema({
   userId: {
     type: String,
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User', // Tham chiếu tới User collection
+    ref: 'User', 
     required: true,
     required: true,
   },
@@ -57,8 +56,7 @@ const orderSchema = new mongoose.Schema({
   },
 });
 
-//Creating Model
 const Order = new mongoose.model("order", orderSchema);
 
-//Model Exports
+
 module.exports = Order;
