@@ -5,11 +5,10 @@ const router = express.Router();
 const { checkUser } = require("../middlewares/AuthMiddleware");
 const { getIndex } = require("../controllers/index.controller");
 
-//Checking user on every route
 router.use("*", checkUser); 
 
-//Home Get Route
+//Home 
 router.get("/", getIndex);
 
-//Router Export
+t
 module.exports = router; 

@@ -1,16 +1,15 @@
 const express = require("express");
 const router = express.Router();
 
-//indexController
 const { getMenu, getSearch } = require("../controllers/menu.controller");
 
-//Middleware Import
+
 const { isAuthenticated } = require("../middlewares/AuthMiddleware");
 
-//Menu Get Route
+//Menu
 router.get("/", isAuthenticated, getMenu);
 
-//Menu Get Route
+//Search
 router.get("/search", isAuthenticated, getSearch);
 
 //Router Export

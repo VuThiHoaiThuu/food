@@ -11,30 +11,24 @@ const {
   patchUpdate,
 } = require("../controllers/user.controller");
 
-//Authentication Middleware
 const {
   isAuthenticated,
   checkUser,
   isLogged,
 } = require("../middlewares/AuthMiddleware");
 
-// Login Get Route
+//Login 
 router.get("/login", isLogged, getLogin);
-
-// Login Post Route
 router.post("/login", postLogin);
 
-// Register Get Route
+//Register Route
 router.get("/register", isLogged, getRegister);
-
-// Register Post Route
 router.post("/register", postRegister);
 
-// Logout Route
+//Logout 
 router.get("/logout", getLogout);
 
-//User Details Update Route
 router.patch("/u/:field", isAuthenticated, patchUpdate);
 
-//Router Export
+
 module.exports = router;

@@ -45,7 +45,7 @@ app.use("/orders", require("./routes/orders.routes"));
 //Routes admin
 app.use('/admin', require("./routes/admin.routes"));
 
-//Listen
+
 database().then(() => {
   app.listen(
     process.env.PORT,

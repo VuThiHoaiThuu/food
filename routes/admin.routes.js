@@ -20,31 +20,31 @@ const {
   requireLogin,
 } = require("../middlewares/AuthMiddleware");
 
-// Login Routes
+//Login 
 router.get("/login", getLogin);
 router.post("/login", postLogin);
 
-// Logout Route
+//Logout 
 router.get("/logout", getLogout);
 
-// Main Page Route
+//Indedx
 router.get('/', requireLogin, getIndex);
 
-// Product Routes
+//Product 
 router.get("/products",requireLogin, getProducts);
 
 //Create new product
 router.get("/products/create", addProduct)
 router.post("/products/create",upload.single("image"), createProduct);
 
-// Route để lấy thông tin sản phẩm cho việc chỉnh sửa
+// Edit product
 router.get('/products/edit/:id', editProduct);
-// Route để cập nhật thông tin sản phẩm
 router.post('/products/update/:id',upload.single("image"), updateProduct);
-//Xóa sản phẩm
+
+//Delete product
 router.post("/products/:id/delete", deleteProduct);
 
-
+// Orders
 router.get("/order", requireLogin, getOrders);
 router.get('/order/:id', getOrderDetails);
 
