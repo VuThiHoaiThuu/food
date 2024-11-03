@@ -85,9 +85,38 @@ module.exports.getIndex = async (req, res) => {
     myCss.push({
       uri: "/css/styles.css",
     });
+    
+
+    // Lấy dữ liệu thống kê từ model Order
+    const orders = await Order.find();
+    const salesData = {};
+
+    // Tính tổng số lượng và doanh số cho từng sản phẩm
+    orders.forEach(order => {
+      order.items.forEach(item => {
+        if (!salesData[item.itemName]) {
+          salesData[item.itemName] = { quantity: 0, revenue: 0 };
+        }
+        salesData[item.itemName].quantity += item.itemQty;
+        salesData[item.itemName].revenue += item.itemQty * item.itemPrice;
+      });
+    });
+
+    // Chuyển đổi dữ liệu thành mảng để truyền vào EJS
+    const formattedSalesData = Object.keys(salesData).map(itemName => ({
+      itemName,
+      quantity: salesData[itemName].quantity,
+      revenue: salesData[itemName].revenue,
+    }));
+
+    // Render trang admin cùng với dữ liệu thống kê
+    res.render("admin/", {
+      title: "Admin",
+      styles: myCss,
+      salesData: formattedSalesData, // truyền dữ liệu thống kê vào view
+    });
   
-  
-    res.render("admin/", { title: "admin", styles: myCss});
+    //res.render("admin/", { title: "admin", styles: myCss});
   };
 
 

@@ -11342,3 +11342,26 @@ button {
 button:hover {
   background-color: #218838; /* Màu nền khi hover */
 }
+
+/* CSS cho biểu đồ */
+.chart-container {
+  display: flex; /* Sử dụng Flexbox để chia cột */
+  justify-content: space-between; /* Khoảng cách đều giữa các cột */
+  align-items: flex-start; /* Căn chỉnh các biểu đồ ở đầu cột */
+  margin-top: 20px; /* Khoảng cách trên cho container */
+}
+
+.name {
+  display: flex; /* Sử dụng Flexbox để chia cột */
+  justify-content: space-between; /* Khoảng cách đều giữa các cột */
+}
+
+.chart-container h3 {
+  text-align: center; /* Căn giữa tiêu đề của mỗi biểu đồ */
+}
+
+canvas {
+  max-width: 48%; /* Giới hạn chiều rộng tối đa cho canvas */
+  height: auto; /* Để chiều cao tự động điều chỉnh theo chiều rộng */
+
+}

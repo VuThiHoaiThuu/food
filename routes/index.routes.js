@@ -10,5 +10,5 @@ router.use("*", checkUser);
 //Home 
 router.get("/", getIndex);
 
-t
+
 module.exports = router; 
