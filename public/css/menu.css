@@ -514,3 +514,37 @@ Fonts Face Host
   font-weight: normal;
   font-style: normal;
 }
+
+
+.sort__dropdown {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.sort__dropdown label {
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.sort__dropdown select {
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  color: #333;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sort__dropdown select:hover {
+  border-color: #888;
+}
+
+.sort__dropdown select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
