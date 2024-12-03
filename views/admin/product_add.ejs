@@ -1,0 +1,49 @@
+<!-- views/admin/product_edit.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+</head>
+<body>
+    <div class="container">
+        <h1><%= title %></h1>
+        <form action="/admin/products/create" method="POST" enctype="multipart/form-data">
+            <div>
+                <label>Item ID:</label>
+                <input type="number" name="itemId" required >
+            </div>
+            <div>
+                <label>Name:</label>
+                <input type="text" name="name" required>
+            </div>
+            <div>
+                <label>Price:</label>
+                <input type="number" name="price" required>
+            </div>
+            <div>
+                <label>Serve:</label>
+                <input type="number" name="serve" required>
+            </div>
+            <div>
+                <label>Unit:</label>
+                <input type="text" name="unit" required>
+            </div>
+            
+            <div>
+                <label>New Image:</label>
+                <!-- Chọn ảnh mới để thay thế -->
+                <input type="file" name="image" required>
+            </div>
+            <div>
+                <label>Category:</label>
+                <input type="text" name="category" required>
+            </div>
+            <button type="submit">Thêm mới sản phẩm</button>
+            <button class="btn-close" onclick="window.location.href='/admin/products'">Đóng</button>
+        </form>
+    </div>
+
+</body>
+
