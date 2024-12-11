@@ -1,0 +1,59 @@
+<!-- views/admin/product_edit.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+</head>
+<body>
+    <div class="container">
+        <h1><%= title %></h1>
+        <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+            <div class="errors"><%- include('../partials/messages') %></div>
+        <% } %>
+        <form action="/admin/products/update/<%= products._id %>" method="POST" enctype="multipart/form-data">
+            <div>
+                <label>Item ID:</label>
+                <input type="number" style="color:rgb(192, 189, 186)" name="itemId" value="<%= products.itemId %>" required disabled>
+            </div>
+            <div>
+                <label>Tên:</label>
+                <input type="text" name="name" value="<%= products.name %>" required>
+            </div>
+            <div>
+                <label>Giá:</label>
+                <input type="number" name="price" value="<%= products.price %>" required>
+            </div>
+            <div>
+                <label>Số lượng:</label>
+                <input type="number" name="serve" value="<%= products.serve %>" required>
+            </div>
+            <div>
+                <label>Đơn vị:</label>
+                <input type="text" name="unit" value="<%= products.unit %>" required>
+            </div>
+            <div>
+                <label>Ảnh hiện tại:</label>
+                <!-- Hiển thị ảnh hiện tại của sản phẩm -->
+                <div>
+                    <img src="<%= products.image.startsWith('/img/') ? products.image : '/uploads/' + products.image %>" 
+                    alt="<%= products.name %>" width="150px" >
+                </div>
+            </div>
+            <div>
+                <label>Ảnh mới:</label>
+                <!-- Chọn ảnh mới để thay thế -->
+                <input type="file" name="image">
+            </div>
+            <div>
+                <label>Loại:</label>
+                <input type="text" name="category" value="<%= products.category %>" required>
+            </div>
+            <button type="submit">Cập nhật sản phẩm</button>
+            <button class="btn-close" onclick="window.location.href='/admin/products'">Đóng</button>
+        </form>
+    </div>
+
+</body>
+

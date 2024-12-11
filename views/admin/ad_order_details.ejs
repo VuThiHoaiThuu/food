@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/order_detail.css">
+    <title><%= title %></title>
+</head>
+<body>
+    <div class="container">
+        <h1>Chi tiết đơn hàng</h1>
+        <h3>Tên khách hàng: <%= order.userId.name %></h3>
+        <h3>Địa chỉ: <%= order.address %></h3>
+
+        <h3>Danh sách sản phẩm:</h3>
+        <table class="order-table">
+            <thead>
+                <tr>
+                    <th>Tên món</th>
+                    <th>Số lượng</th>
+                    <th>Giá</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% order.items.forEach(item => { %>
+                    <tr>
+                        <td><%= item.itemName %></td>
+                        <td><%= item.itemQty %></td>
+                        <td><%= item.itemPrice.toLocaleString('vi-VN') %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+
+        <h3>Hóa đơn:</h3>
+        
+        <p>Thành tiền: <%= order.bill.subTotal.toLocaleString('vi-VN') %></p>
+        <p>Thuế: <%= order.bill.tax.toLocaleString('vi-VN') %></p>
+        <p>Phí giao hàng: <%= order.bill.deliveryCharge.toLocaleString('vi-VN') %></p>
+        <p>Tổng cộng: <%= order.bill.grandTotal.toLocaleString('vi-VN') %></p>
+
+        <a href="/admin/order" class="back-link">Quay lại danh sách đơn hàng</a>
+    </div>
+</body> 
+</html>
